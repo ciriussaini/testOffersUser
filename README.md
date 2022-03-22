@@ -5,7 +5,7 @@ step1: npm i express request mysql2 cors body-parser --save
 
 step2:	npm install -g nodemon
 
-step3: add configuration in db.config.js
+step3: add configuration in db.config.js and create the tables mentioned at last in mysql db
 
 step4: nodemon index.js
 
