@@ -24,9 +24,9 @@ exports.insertOfferDataForUser = (req, res) => {
       else res.send(data);
     });
   };
-
-  exports.findOfferForUsers = (req, res) => {
-    userOffer.findOfferForUsers(req.params.userid, (err, data) => {
+  
+  exports.findOfferForUsers = async (req, res) => {
+    await userOffer.findOfferForUsers(req.params.userid, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
@@ -37,6 +37,10 @@ exports.insertOfferDataForUser = (req, res) => {
             message: "Error retrieving offer with user id " + req.params.userid
           });
         }
-      } else res.send(data);
+      } else {
+        res.offerData = {...data};
+      }
     });
+    res.send(res.offerData);
+    
   };
